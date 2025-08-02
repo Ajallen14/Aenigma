@@ -1,6 +1,7 @@
 import 'package:crossword/crossword.dart';
 import 'package:flutter/material.dart';
 
+/// A screen dedicated to displaying a more challenging crossword puzzle.
 class CrosswordScreen extends StatefulWidget {
   const CrosswordScreen({Key? key}) : super(key: key);
 
@@ -9,30 +10,39 @@ class CrosswordScreen extends StatefulWidget {
 }
 
 class _CrosswordScreenState extends State<CrosswordScreen> {
+  // A smaller, but still difficult, 12x12 crossword grid.
   final List<List<String>> letters = const [
-    ["F", "L", "U", "T", "T", "E", "R", "W", "U", "D", "B", "C"],
-    ["R", "M", "I", "O", "P", "U", "I", "Q", "R", "L", "E", "G"],
-    ["T", "V", "D", "I", "R", "I", "M", "U", "A", "H", "E", "A"],
-    ["D", "A", "R", "T", "N", "S", "T", "O", "Y", "J", "R", "M"],
-    ["O", "G", "A", "M", "E", "S", "C", "O", "L", "O", "R", "O"],
-    ["S", "R", "T", "I", "I", "I", "F", "X", "S", "P", "E", "D"],
-    ["Y", "S", "N", "E", "T", "M", "M", "C", "E", "A", "T", "S"],
-    ["W", "E", "T", "P", "A", "T", "D", "Y", "L", "M", "N", "U"],
-    ["O", "T", "E", "H", "R", "O", "G", "P", "T", "U", "O", "E"],
-    ["K", "R", "R", "C", "G", "A", "M", "E", "S", "S", "T", "S"],
-    ["S", "E", "S", "T", "L", "A", "O", "P", "U", "P", "E", "S"],
+    ['C', 'O', 'N', 'U', 'N', 'D', 'R', 'U', 'M', 'A', 'B', 'C'],
+    ['X', 'L', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    ['P', 'A', 'R', 'A', 'D', 'O', 'X', 'I', 'J', 'K', 'L', 'M'],
+    ['A', 'B', 'I', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'],
+    ['R', 'Y', 'N', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    ['A', 'R', 'T', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'],
+    ['D', 'I', 'H', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+    ['O', 'N', 'B', 'S', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'],
+    ['X', 'T', 'A', 'M', 'E', 'N', 'I', 'G', 'M', 'A', 'R', 'S'],
+    ['W', 'V', 'L', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+    ['Q', 'R', 'S', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'],
+    ['H', 'S', 'I', 'R', 'E', 'B', 'B', 'I', 'G', 'X', 'Y', 'Z'],
   ];
 
-  final List<String> hints = const ["FLUTTER", "GAMES", "UI", "COLOR"];
+  // The list of difficult words to find.
+  final List<String> hints = const [
+    "PARADOX",
+    "ENIGMA",
+    "LABYRINTH",
+    "CONUNDRUM",
+    "MIASMA",
+    "GIBBERISH",
+  ];
 
+  // GlobalKey to access the Crossword widget's state if needed.
   final GlobalKey<CrosswordState> crosswordState = GlobalKey<CrosswordState>();
-
-  String word = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple.shade900,
+      backgroundColor: Colors.deepPurple.shade900, // Match app theme
       appBar: AppBar(
         title: const Text(
           'The Unsolvable Crossword',
@@ -41,30 +51,26 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
         backgroundColor: Colors.deepPurple,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(), // Close the crossword
           tooltip: 'Close Crossword',
         ),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 10),
-              child: Text(
-                word.isEmpty ? 'Find a word!' : 'Selected: $word',
-                style: const TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
+            // The text displaying the current word has been removed for more difficulty.
             Expanded(
               child: Crossword(
                 key: crosswordState,
                 letters: letters,
                 hints: hints,
+                // Styling for the crossword grid letters
                 textStyle: const TextStyle(
                   color: Colors.blue,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
+                // Styling for the lines drawn by the user
                 lineDecoration: const LineDecoration(
                   lineGradientColors: [
                     [
@@ -82,31 +88,30 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                // Styling for when a letter is popped (touched)
                 letterPopDecoration: const LetterPopDecoration(
                   onTouchPopScaleFactor: 1.5,
                   duration: Duration(milliseconds: 200),
                   onTouchLetterFontStyle: FontStyle.italic,
                 ),
+                // Styling for revealing letters (e.g., hints)
                 revealLetterDecoration: const RevealLetterDecoration(
                   shakeOffset: Offset(10, 20),
                 ),
-                allowOverlap: false,
-                spacing: const Offset(30, 30),
+                allowOverlap: false, // Prevents lines from overlapping
+                spacing: const Offset(30, 30), // Spacing between letters
                 onLineUpdate:
                     (String currentWord, List<String> foundWords, isLineDrawn) {
-                      setState(() {
-                        word = currentWord;
-                      });
+                      // The setState call was removed from here to not show the current word.
                       if (isLineDrawn) {
                         print('Word formed: $currentWord');
                         if (foundWords.contains(currentWord)) {
                           print('Found a hint word: $currentWord');
                         }
-                      } else {
                       }
                     },
                 addIncorrectWord:
-                    false,
+                    false, // Do not add incorrect words to found list
               ),
             ),
             Padding(
@@ -124,9 +129,7 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
                     vertical: 12,
                   ),
                 ),
-                child: const Text(
-                  'Finished',
-                ),
+                child: const Text('Finished'),
               ),
             ),
           ],
