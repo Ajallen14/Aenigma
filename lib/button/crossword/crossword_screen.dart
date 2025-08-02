@@ -33,13 +33,12 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
     "GIBBERISH",
   ];
 
-  // GlobalKey to access the Crossword widget's state if needed.
   final GlobalKey<CrosswordState> crosswordState = GlobalKey<CrosswordState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple.shade900, // Match app theme
+      backgroundColor: Colors.deepPurple.shade900,
       appBar: AppBar(
         title: const Text(
           'The Unsolvable Crossword',
@@ -48,26 +47,23 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
         backgroundColor: Colors.deepPurple,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(), // Close the crossword
+          onPressed: () => Navigator.of(context).pop(),
           tooltip: 'Close Crossword',
         ),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            // The text displaying the current word has been removed for more difficulty.
             Expanded(
               child: Crossword(
                 key: crosswordState,
                 letters: letters,
                 hints: hints,
-                // Styling for the crossword grid letters
                 textStyle: const TextStyle(
                   color: Colors.blue,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
-                // Styling for the lines drawn by the user
                 lineDecoration: const LineDecoration(
                   lineGradientColors: [
                     [
@@ -85,30 +81,21 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Styling for when a letter is popped (touched)
                 letterPopDecoration: const LetterPopDecoration(
                   onTouchPopScaleFactor: 1.5,
                   duration: Duration(milliseconds: 200),
                   onTouchLetterFontStyle: FontStyle.italic,
                 ),
-                // Styling for revealing letters (e.g., hints)
                 revealLetterDecoration: const RevealLetterDecoration(
                   shakeOffset: Offset(10, 20),
                 ),
-                allowOverlap: false, // Prevents lines from overlapping
-                spacing: const Offset(30, 30), // Spacing between letters
+                allowOverlap: false, 
+                spacing: const Offset(30, 30),
                 onLineUpdate:
                     (String currentWord, List<String> foundWords, isLineDrawn) {
-                      // The setState call was removed from here to not show the current word.
-                      if (isLineDrawn) {
-                        print('Word formed: $currentWord');
-                        if (foundWords.contains(currentWord)) {
-                          print('Found a hint word: $currentWord');
-                        }
-                      }
                     },
                 addIncorrectWord:
-                    false, // Do not add incorrect words to found list
+                    false, 
               ),
             ),
             Padding(
