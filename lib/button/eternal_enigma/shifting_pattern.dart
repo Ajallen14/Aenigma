@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'dart:async';
 
 class ShiftingPatternGameScreen extends StatefulWidget {
-  const ShiftingPatternGameScreen({super.key});
+  const ShiftingPatternGameScreen({Key? key}) : super(key: key);
 
   @override
   _ShiftingPatternGameScreenState createState() => _ShiftingPatternGameScreenState();
@@ -12,7 +12,7 @@ class ShiftingPatternGameScreen extends StatefulWidget {
 
 class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
     with SingleTickerProviderStateMixin {
-  final int _gridSize = 4; // 4x4 grid
+  final int _gridSize = 4;
   late List<List<Color>> _gridColors;
   late List<List<Color>> _targetPattern;
   final List<Color> _availableColors = [
@@ -26,6 +26,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
   final math.Random _random = math.Random();
   Timer? _targetShiftTimer;
   int _tapCount = 0;
+
   late AnimationController _entryAnimationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
@@ -80,7 +81,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
 
   void _shiftTargetPattern() {
     setState(() {
-      final int changes = _random.nextInt(3) + 1; 
+      final int changes = _random.nextInt(3) + 1;
       for (int i = 0; i < changes; i++) {
         final int row = _random.nextInt(_gridSize);
         final int col = _random.nextInt(_gridSize);
@@ -92,14 +93,17 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
   void _handleTileTap(int row, int col) {
     setState(() {
       _tapCount++;
+
       _gridColors[row][col] = _getRandomColor();
-      final int cascadeCount = _random.nextInt(5) + 1; 
+
+      final int cascadeCount = _random.nextInt(5) + 1;
       for (int i = 0; i < cascadeCount; i++) {
         final int r = _random.nextInt(_gridSize);
         final int c = _random.nextInt(_gridSize);
         _gridColors[r][c] = _getRandomColor();
       }
-      if (_tapCount % 5 == 0) { 
+
+      if (_tapCount % 5 == 0) {
         _shiftTargetPattern();
       }
     });
@@ -113,7 +117,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
       headerAnimationLoop: false,
       title: 'The Enigma is Eternal',
       desc: 'There is no escape. You are part of the pattern now.',
-      btnOkOnPress: () {}, 
+      btnOkOnPress: () {},
       btnOkColor: Colors.purple,
       dismissOnTouchOutside: false,
       dismissOnBackKeyPress: false,
@@ -174,7 +178,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
                 const SizedBox(height: 20),
                 Text(
                   'Match this pattern:',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 18),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -211,7 +215,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
                 const SizedBox(height: 20),
                 Text(
                   'Your Pattern:',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 18),
                 ),
                 const SizedBox(height: 10),
                 Expanded(
@@ -239,7 +243,7 @@ class _ShiftingPatternGameScreenState extends State<ShiftingPatternGameScreen>
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black,
+                                  color: Colors.black.withOpacity(0.2),
                                   blurRadius: 5,
                                   offset: const Offset(2, 2),
                                 ),

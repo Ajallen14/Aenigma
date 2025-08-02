@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen>
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize:
-                    MainAxisSize.min, 
+                    MainAxisSize.min,
                 children: [
                   Align(
                     alignment: Alignment.topRight,
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen>
                   const SizedBox(height: 30),
                   ElevatedButton(
                     onPressed:
-                        _showUselessLoginDialog, 
+                        _showUselessLoginDialog,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber.shade700,
                       foregroundColor: Colors.white,

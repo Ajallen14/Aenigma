@@ -3,9 +3,8 @@ import 'dart:async';
 
 import 'package:useless/home_screen.dart';
 
-/// The splash screen for "The Unsolvable Puzzle" app.
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -22,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen>
   int _pressCount = 0;
   bool _isButtonAnimating = false;
 
-  // Button position
   double _buttonTop = 0;
   double _buttonLeft = 0;
   final double _buttonWidth = 250;
@@ -33,7 +31,6 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Initialize title animation
     _titleAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -144,7 +141,6 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Title
                       ScaleTransition(
                         scale: _titleScaleAnimation,
                         child: Text(
@@ -174,7 +170,7 @@ class _SplashScreenState extends State<SplashScreen>
                         child: Text(
                           'Are you ready to start your misery?',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.8),
                             fontSize: 18,
                             fontStyle: FontStyle.italic,
                             fontFamily: 'Inter',
@@ -196,7 +192,7 @@ class _SplashScreenState extends State<SplashScreen>
                     onPressed: _onButtonPressed,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _isButtonAnimating
-                          ? Colors.redAccent
+                          ? Colors.redAccent.withOpacity(0.5)
                           : Colors.redAccent,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -218,7 +214,7 @@ class _SplashScreenState extends State<SplashScreen>
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: _isButtonAnimating
-                            ? Colors.white
+                            ? Colors.white.withOpacity(0.5)
                             : Colors.white,
                       ),
                     ),

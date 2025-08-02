@@ -17,25 +17,25 @@ class _RiddleRealmScreenState extends State<RiddleRealmScreen>
 
   final TextEditingController _answerController = TextEditingController();
   final List<String> _riddles = const [
-    "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?", // Echo
-    "What has an eye, but cannot see?", // Needle
-    "What is full of holes but still holds water?", // Sponge
-    "What question can you never answer yes to?", // Are you asleep yet?
-    "What is always in front of you but can’t be seen?", // The future
-    "I am always hungry, I must always be fed, The finger I touch, Will soon turn red. What am I?", // Fire
-    "What has cities, but no houses; forests, but no trees; and water, but no fish?", // A map
-    "The more you take, the more you leave behind. What am I?", // Footsteps
-    "What has to be broken before you can use it?", // An egg
-    "I have branches, but no fruit, trunk, or leaves. What am I?", // A bank
-    "What is so fragile that saying its name breaks it?", // Silence
-    "What goes up but never comes down?", // Your age
-    "What is always coming, but never arrives?", // Tomorrow
-    "What gets wet while drying?", // A towel
-    "What has a neck but no head?", // A bottle or shirt
-    "What has a thumb and four fingers, but is not alive?", // A glove
-    "What kind of room has no doors or windows?", // A mushroom
-    "What is always in front of you but can’t be seen?", // The future (repeated for futility)
-    "I am an endless loop, a futile quest, a promise never kept. What am I?", // This app
+    "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+    "What has an eye, but cannot see?",
+    "What is full of holes but still holds water?",
+    "What question can you never answer yes to?",
+    "What is always in front of you but can’t be seen?",
+    "I am always hungry, I must always be fed, The finger I touch, Will soon turn red. What am I?",
+    "What has cities, but no houses; forests, but no trees; and water, but no fish?",
+    "The more you take, the more you leave behind. What am I?",
+    "What has to be broken before you can use it?",
+    "I have branches, but no fruit, trunk, or leaves. What am I?",
+    "What is so fragile that saying its name breaks it?",
+    "What goes up but never comes down?",
+    "What is always coming, but never arrives?",
+    "What gets wet while drying?",
+    "What has a neck but no head?",
+    "What has a thumb and four fingers, but is not alive?",
+    "What kind of room has no doors or windows?",
+    "What is always in front of you but can’t be seen?",
+    "I am an endless loop, a futile quest, a promise never kept. What am I?",
   ];
   String _currentRiddle = "";
   final Random _random = Random();
@@ -103,7 +103,7 @@ class _RiddleRealmScreenState extends State<RiddleRealmScreen>
       headerAnimationLoop: false,
       title: 'Heheheee ',
       desc: 'Are u such a wuss to leave it like that',
-      btnOkOnPress: () {}, 
+      btnOkOnPress: () {},
       btnOkColor: Colors.red,
       dismissOnTouchOutside: false,
       dismissOnBackKeyPress: false,
@@ -136,7 +136,6 @@ class _RiddleRealmScreenState extends State<RiddleRealmScreen>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Close Button
                   Align(
                     alignment: Alignment.topRight,
                     child: IconButton(

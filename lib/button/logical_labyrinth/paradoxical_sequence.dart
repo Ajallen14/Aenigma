@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart'; 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'dart:math' as math;
 
 class ParadoxicalSequenceGameScreen extends StatefulWidget {
-  const ParadoxicalSequenceGameScreen({super.key});
+  const ParadoxicalSequenceGameScreen({Key? key}) : super(key: key);
 
   @override
   _ParadoxicalSequenceGameScreenState createState() => _ParadoxicalSequenceGameScreenState();
@@ -18,13 +18,13 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
   final TextEditingController _answerController = TextEditingController();
   final math.Random _random = math.Random();
 
-  final List<int> _currentSequence = [];
+  List<int> _currentSequence = [];
   int _nextExpectedItem = 0;
-  String _currentRuleType = ''; 
+  String _currentRuleType = '';
 
   final List<String Function(int, int)> _ruleGenerators = [
     (start, factor) {
-      return 'add_$factor';
+      return 'add_${factor}';
     },
     (start, factor) {
       return 'multiply_by_${factor}';
@@ -83,7 +83,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
       _currentRuleType = _ruleGenerators[ruleIndex](startValue, factor);
 
       _currentSequence.add(startValue);
-      for (int i = 0; i < 3; i++) { 
+      for (int i = 0; i < 3; i++) {
         int nextVal;
         if (_currentRuleType.startsWith('add_')) {
           nextVal = _currentSequence.last + factor;
@@ -104,7 +104,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
             nextVal = _currentSequence[_currentSequence.length - 1] + _currentSequence[_currentSequence.length - 2];
           }
         } else {
-          nextVal = _currentSequence.last + 1; 
+          nextVal = _currentSequence.last + 1;
         }
         _currentSequence.add(nextVal);
       }
@@ -116,7 +116,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
       } else if (_currentRuleType.startsWith('subtract_')) {
         _nextExpectedItem = _currentSequence.last - factor;
       } else if (_currentRuleType.startsWith('alternate_add_subtract_')) {
-        if (_currentSequence.length % 2 == 0) { 
+        if (_currentSequence.length % 2 == 0) {
           _nextExpectedItem = _currentSequence.last - factor;
         } else {
           _nextExpectedItem = _currentSequence.last + factor;
@@ -127,7 +127,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
         _nextExpectedItem = _currentSequence.last + 1;
       }
 
-      if (_random.nextDouble() < 0.3) { 
+      if (_random.nextDouble() < 0.3) {
         _nextExpectedItem += (_random.nextBool() ? 1 : -1) * (_random.nextInt(2) + 1);
       }
     });
@@ -200,7 +200,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black,
+                  color: Colors.black.withOpacity(0.4),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
@@ -234,7 +234,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
                     'What comes next in this sequence?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.white.withOpacity(0.9),
                       fontSize: 18,
                     ),
                   ),
@@ -262,7 +262,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Your Guess',
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.8)),
                       filled: true,
                       fillColor: Colors.deepPurple.shade600,
                       border: OutlineInputBorder(
@@ -296,7 +296,7 @@ class _ParadoxicalSequenceGameScreenState extends State<ParadoxicalSequenceGameS
                     onPressed: _showGiveUpDialog,
                     child: Text(
                       'Give Up?',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white.withOpacity(0.7)),
                     ),
                   ),
                 ],

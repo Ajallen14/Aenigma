@@ -2,14 +2,13 @@ import 'package:crossword/crossword.dart';
 import 'package:flutter/material.dart';
 
 class CrosswordScreen extends StatefulWidget {
-  const CrosswordScreen({super.key});
+  const CrosswordScreen({Key? key}) : super(key: key);
 
   @override
   State<CrosswordScreen> createState() => _CrosswordScreenState();
 }
 
 class _CrosswordScreenState extends State<CrosswordScreen> {
-
   final List<List<String>> letters = const [
     ["F", "L", "U", "T", "T", "E", "R", "W", "U", "D", "B", "C"],
     ["R", "M", "I", "O", "P", "U", "I", "Q", "R", "L", "E", "G"],
@@ -91,13 +90,20 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
                 revealLetterDecoration: const RevealLetterDecoration(
                   shakeOffset: Offset(10, 20),
                 ),
-                allowOverlap: false, 
+                allowOverlap: false,
                 spacing: const Offset(30, 30),
                 onLineUpdate:
                     (String currentWord, List<String> foundWords, isLineDrawn) {
                       setState(() {
                         word = currentWord;
                       });
+                      if (isLineDrawn) {
+                        print('Word formed: $currentWord');
+                        if (foundWords.contains(currentWord)) {
+                          print('Found a hint word: $currentWord');
+                        }
+                      } else {
+                      }
                     },
                 addIncorrectWord:
                     false,

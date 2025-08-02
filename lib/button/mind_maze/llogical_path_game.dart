@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'dart:async';
 
 class IllogicalPathGameScreen extends StatefulWidget {
-  const IllogicalPathGameScreen({super.key});
+  const IllogicalPathGameScreen({Key? key}) : super(key: key);
 
   @override
   _IllogicalPathGameScreenState createState() =>
@@ -13,8 +13,8 @@ class IllogicalPathGameScreen extends StatefulWidget {
 
 class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
     with SingleTickerProviderStateMixin {
-  final int _gridSize = 7; 
-  late List<List<int>> _maze; 
+  final int _gridSize = 7;
+  late List<List<int>> _maze;
   late int _playerRow, _playerCol;
   late int _endRow, _endCol;
   final math.Random _random = math.Random();
@@ -67,16 +67,16 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
 
       _playerRow = _random.nextInt(_gridSize);
       _playerCol = _random.nextInt(_gridSize);
-      _maze[_playerRow][_playerCol] = 2; 
+      _maze[_playerRow][_playerCol] = 2;
 
       do {
         _endRow = _random.nextInt(_gridSize);
         _endCol = _random.nextInt(_gridSize);
       } while ((_endRow == _playerRow && _endCol == _playerCol) ||
           _maze[_endRow][_endCol] == 1);
-      _maze[_endRow][_endCol] = 3; 
+      _maze[_endRow][_endCol] = 3;
 
-      _moveCount = 0; 
+      _moveCount = 0;
     });
   }
 
@@ -111,13 +111,12 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
           _maze[r][c] = 1 - _maze[r][c];
         }
       }
-      _updateControlMap(); 
+      _updateControlMap();
     });
   }
 
   void _movePlayer(String actualDirection) {
-    if (_mazeShiftTimer != null && !_mazeShiftTimer!.isActive)
-      return; 
+    if (_mazeShiftTimer != null && !_mazeShiftTimer!.isActive) return;
 
     int newRow = _playerRow;
     int newCol = _playerCol;
@@ -156,7 +155,7 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
   }
 
   void _showNotQuiteDialog() {
-    _mazeShiftTimer?.cancel(); 
+    _mazeShiftTimer?.cancel();
     AwesomeDialog(
       context: context,
       dialogType: DialogType.info,
@@ -165,9 +164,9 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
       title: 'Not Quite!',
       desc: 'You found *a* path, but the maze shifts... Try again!',
       btnOkOnPress: () {
-        _initializeMaze(); 
-        _updateControlMap(); 
-        _startMazeShiftTimer(); 
+        _initializeMaze();
+        _updateControlMap();
+        _startMazeShiftTimer();
       },
       btnOkColor: Colors.blue,
       dismissOnTouchOutside: false,
@@ -176,7 +175,7 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
   }
 
   void _showEscapeDialog() {
-    _mazeShiftTimer?.cancel(); 
+    _mazeShiftTimer?.cancel();
     AwesomeDialog(
       context: context,
       dialogType: DialogType.noHeader,
@@ -223,7 +222,6 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Close Button
                 Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
@@ -251,12 +249,11 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
                 Text(
                   'Moves: $_moveCount',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.white.withOpacity(0.8),
                     fontSize: 16,
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Maze Grid Display
                 Expanded(
                   child: AspectRatio(
                     aspectRatio: 1.0,
@@ -277,13 +274,13 @@ class _IllogicalPathGameScreenState extends State<IllogicalPathGameScreen>
 
                         Color cellColor;
                         if (cellType == 1) {
-                          cellColor = Colors.deepPurple.shade900; 
+                          cellColor = Colors.deepPurple.shade900;
                         } else if (cellType == 2) {
-                          cellColor = Colors.amber.shade700; 
+                          cellColor = Colors.amber.shade700;
                         } else if (cellType == 3) {
-                          cellColor = Colors.greenAccent; 
+                          cellColor = Colors.greenAccent;
                         } else {
-                          cellColor = Colors.deepPurple.shade500; 
+                          cellColor = Colors.deepPurple.shade500;
                         }
 
                         return AnimatedContainer(

@@ -18,7 +18,6 @@ class UnsolvablePuzzleApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Inter',
       ),
-      // The app now starts with the splash screen
       home: const SplashScreen(),
     );
   }

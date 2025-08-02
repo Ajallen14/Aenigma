@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fireworks/flutter_fireworks.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter_fireworks/fireworks_controller.dart';
-import 'package:flutter_fireworks/fireworks_display.dart';
 import 'package:useless/button/chaos_cube/unstable_tower.dart';
 import 'package:useless/button/crossword/crossword_screen.dart';
 import 'package:useless/button/eternal_enigma/shifting_pattern.dart';
 import 'package:useless/button/logical_labyrinth/paradoxical_sequence.dart';
+import 'package:useless/button/login/login_screen.dart';
 import 'package:useless/button/mind_maze/llogical_path_game.dart';
+import 'package:useless/button/riddle_realm/riddle_realm.dart';
+
 import 'package:useless/widgets/physics_widget.dart';
 
 class PuzzleHomePage extends StatefulWidget {
@@ -17,19 +19,18 @@ class PuzzleHomePage extends StatefulWidget {
 }
 
 class _PuzzleHomePageState extends State<PuzzleHomePage> {
-
   final fireworksController = FireworksController(
     colors: [
-      const Color(0xFFFF4C40), 
-      const Color(0xFF6347A6), 
-      const Color(0xFF7FB13B), 
-      const Color(0xFF82A0D1), 
-      const Color(0xFFF7B3B2), 
-      const Color(0xFF864542), 
-      const Color(0xFFB04A98), 
-      const Color(0xFF008F6C), 
-      const Color(0xFFFFFF33), 
-      const Color(0xFFFF6F7C), 
+      const Color(0xFFFF4C40),
+      const Color(0xFF6347A6),
+      const Color(0xFF7FB13B),
+      const Color(0xFF82A0D1),
+      const Color(0xFFF7B3B2),
+      const Color(0xFF864542),
+      const Color(0xFFB04A98),
+      const Color(0xFF008F6C),
+      const Color(0xFFFFFF33),
+      const Color(0xFFFF6F7C),
     ],
     minExplosionDuration: 0.5,
     maxExplosionDuration: 3.5,
@@ -42,21 +43,20 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
     AwesomeDialog(
       context: context,
       dialogType:
-          DialogType.noHeader, 
+          DialogType.noHeader,
       animType: AnimType.bottomSlide,
       headerAnimationLoop: false,
       title: 'Heheheee ',
       desc: 'You can\'t leave that easily 😜',
       btnOkOnPress:
-          () {}, 
-      btnOkColor: Colors.red, 
-      dismissOnTouchOutside: false, 
-      dismissOnBackKeyPress: false, 
+          () {},
+      btnOkColor: Colors.red,
+      dismissOnTouchOutside: false,
+      dismissOnBackKeyPress: false,
     ).show();
   }
 
   void _showFakeGameDialog(String gameName) {
-    
     Widget gameScreen;
     switch (gameName) {
       case 'Mind Maze':
@@ -75,7 +75,6 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
         gameScreen = const ShiftingPatternGameScreen();
         break;
       default:
-        
         AwesomeDialog(
           context: context,
           dialogType: DialogType.info,
@@ -83,7 +82,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
           headerAnimationLoop: false,
           title: gameName,
           desc: 'This game is just as useless as your attempt to leave.',
-          btnOkOnPress: () {}, 
+          btnOkOnPress: () {},
           btnOkColor: Colors.grey,
           dismissOnTouchOutside: false,
           dismissOnBackKeyPress: false,
@@ -105,7 +104,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
 
   @override
   void dispose() {
-    fireworksController.dispose(); 
+    fireworksController.dispose();
     super.dispose();
   }
 
@@ -115,12 +114,10 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          
           FireworksDisplay(controller: fireworksController),
 
-          
           Align(
-            alignment: const Alignment(0.7, -0.3), 
+            alignment: const Alignment(0.7, -0.3),
             child: PhysicsWidget(
               backgroundColor: Colors.indigo.shade400,
               child: ElevatedButton(
@@ -131,7 +128,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
                       return const Dialog(
                         backgroundColor: Colors.transparent,
                         insetPadding: EdgeInsets.all(16),
-                        child: LoginScreen(), 
+                        child: LoginScreen(),
                       );
                     },
                   );
@@ -139,10 +136,10 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigo.shade400,
                   foregroundColor: Colors.white,
-                  shape: const CircleBorder(), 
+                  shape: const CircleBorder(),
                   padding: const EdgeInsets.all(
                     0,
-                  ), 
+                  ),
                 ),
                 child: const Text(
                   'Login Field?',
@@ -153,12 +150,11 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
 
-
           Align(
             alignment: const Alignment(
               0.0,
               0.7,
-            ), 
+            ),
             child: PhysicsWidget(
               backgroundColor: Colors.amber.shade700,
               child: ElevatedButton.icon(
@@ -179,12 +175,11 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
 
-          
           Align(
             alignment: const Alignment(
               -0.7,
               -0.3,
-            ), 
+            ),
             child: PhysicsWidget(
               backgroundColor: Colors.green.shade700,
               child: ElevatedButton.icon(
@@ -212,12 +207,11 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
 
-          
           Align(
             alignment: const Alignment(
               0.7,
               0.3,
-            ), 
+            ),
             child: PhysicsWidget(
               backgroundColor: Colors.grey.shade800,
               child: ElevatedButton(
@@ -237,9 +231,8 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
 
-          
           Align(
-            alignment: const Alignment(-0.9, -0.8), 
+            alignment: const Alignment(-0.9, -0.8),
             child: PhysicsWidget(
               backgroundColor: Colors.blueGrey.shade700,
               child: ElevatedButton(
@@ -259,7 +252,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.9, -0.8), 
+            alignment: const Alignment(0.9, -0.8),
             child: PhysicsWidget(
               backgroundColor: Colors.deepOrange.shade700,
               child: ElevatedButton(
@@ -279,7 +272,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(-0.9, 0.8), 
+            alignment: const Alignment(-0.9, 0.8),
             child: PhysicsWidget(
               backgroundColor: Colors.teal.shade700,
               child: ElevatedButton(
@@ -299,7 +292,7 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.9, 0.8),  
+            alignment: const Alignment(0.9, 0.8),
             child: PhysicsWidget(
               backgroundColor: Colors.redAccent.shade700,
               child: ElevatedButton(
@@ -342,8 +335,4 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
       ),
     );
   }
-}
-
-class RiddleRealmScreen {
-  const RiddleRealmScreen();
 }

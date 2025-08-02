@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart'; 
-import 'dart:math' as math; 
-import 'dart:async'; 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'dart:math' as math;
+import 'dart:async';
 
 class GameCube {
-  double x, y; 
-  double dx, dy; 
+  double x, y;
+  double dx, dy;
   Color color;
-  bool isStacked; 
+  bool isStacked;
   bool isCorrupted;
+
   GameCube({
     required this.x,
     required this.y,
@@ -21,7 +22,7 @@ class GameCube {
 }
 
 class UnstableTowerGameScreen extends StatefulWidget {
-  const UnstableTowerGameScreen({super.key});
+  const UnstableTowerGameScreen({Key? key}) : super(key: key);
 
   @override
   _UnstableTowerGameScreenState createState() =>
@@ -35,11 +36,12 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
   late Animation<Offset> _slideAnimation;
 
   final math.Random _random = math.Random();
-  final double _cubeSize = 50.0; 
-  final double _gravity = 0.5; 
-  final double _friction = 0.9; 
-  final double _bounceFactor = 0.3; 
-  final List<GameCube> _cubes = [];
+  final double _cubeSize = 50.0;
+  final double _gravity = 0.5;
+  final double _friction = 0.9;
+  final double _bounceFactor = 0.3;
+
+  List<GameCube> _cubes = [];
   Timer? _gameLoopTimer;
   Timer? _spawnCubeTimer;
   Timer? _chaosEventTimer;
@@ -156,12 +158,12 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
             cube.y = _groundY - _cubeSize;
             cube.dy = 0;
             cube.isStacked = true;
-            cube.dx = 0; 
+            cube.dx = 0;
           }
         }
 
         for (int j = 0; j < _cubes.length; j++) {
-          if (i == j) continue; 
+          if (i == j) continue;
 
           final otherCube = _cubes[j];
 
@@ -185,7 +187,7 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
 
       if (anyCollapsed && _cubes.isNotEmpty) {
         _collapseCount++;
-        _isGameRunning = false; 
+        _isGameRunning = false;
         _gameLoopTimer?.cancel();
         _spawnCubeTimer?.cancel();
         _chaosEventTimer?.cancel();
@@ -199,16 +201,16 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
     final screenWidth = MediaQuery.of(context).size.width;
 
     final bool isCorrupted =
-        _random.nextDouble() < 0.2; 
+        _random.nextDouble() < 0.2;
     _cubes.add(
       GameCube(
         x:
             _random.nextDouble() *
             (screenWidth - _cubeSize),
-        y: -_cubeSize, 
+        y: -_cubeSize,
         color: isCorrupted
             ? Colors.red.shade900
-            : _getRandomColor(), 
+            : _getRandomColor(),
         dx: isCorrupted
             ? (_random.nextBool() ? 2.0 : -2.0)
             : 0.0,
@@ -226,14 +228,14 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
       final double windForce = (_random.nextBool() ? 5.0 : -5.0);
       for (final cube in _cubes) {
           cube.dx += windForce;
-          if(cube.isStacked) cube.isStacked = false; 
+          if(cube.isStacked) cube.isStacked = false;
       }
       _showTemporaryMessage('Wind Gust! 🌬️');
     } else if (eventType == 1) {
       for (final cube in _cubes) {
         if (cube.isStacked) {
-          cube.isStacked = false; 
-          cube.dy -= _random.nextDouble() * 10 + 5; 
+          cube.isStacked = false;
+          cube.dy -= _random.nextDouble() * 10 + 5;
           cube.dx +=
               (_random.nextBool() ? 1.0 : -1.0) *
               (_random.nextDouble() * 3);
@@ -245,9 +247,9 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
       final cube = _cubes[targetIndex];
       if (!cube.isCorrupted) {
         setState(() {
-          cube.color = Colors.black; 
+          cube.color = Colors.black;
           cube.isCorrupted = true;
-          cube.dx += (_random.nextBool() ? 5.0 : -5.0); 
+          cube.dx += (_random.nextBool() ? 5.0 : -5.0);
           if(cube.isStacked) cube.isStacked = false;
         });
         _showTemporaryMessage('Cube Corrupted! 💀');
@@ -276,7 +278,7 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
       desc:
           'Order is an illusion. Chaos reigns eternal. You are bound to the collapse.',
       btnOkOnPress: () {
-        _resetGame(); 
+        _resetGame();
       },
       btnOkColor: Colors.red,
       dismissOnTouchOutside: false,
@@ -297,7 +299,7 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
       headerAnimationLoop: false,
       title: 'Order is an Illusion',
       desc: 'Chaos reigns eternal. You are bound to the collapse.',
-      btnOkOnPress: () {}, 
+      btnOkOnPress: () {},
       btnOkColor: Colors.purple,
       dismissOnTouchOutside: false,
       dismissOnBackKeyPress: false,
@@ -338,7 +340,6 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Close Button
                 Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
@@ -410,7 +411,7 @@ class _UnstableTowerGameScreenState extends State<UnstableTowerGameScreen>
                                 ),
                               ),
                             );
-                          }),
+                          }).toList(),
                         ],
                       );
                     },
