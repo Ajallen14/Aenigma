@@ -11,7 +11,7 @@ class UnsolvablePuzzleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The Unsolvable Puzzle',
+      title: 'Aenigma',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,

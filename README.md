@@ -1,7 +1,7 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# Aenigma 🎯
 
 
 ## Basic Details
@@ -9,52 +9,61 @@
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Allen Jude - Albertian Institute of Science & Technology (AISAT)
+- Member 2: Arjun Shiju - Albertian Institute of Science & Technology (AISAT)
 
 ### Project Description
-[2-3 lines about what your project does]
+Aenigma is a Flutter-based mobile application designed to be a collection of unsolvable puzzles and delightfully frustrating mini-games. It's a journey into chaos, where logic is optional and the goal is to embrace the absurdity.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+In a world saturated with apps that boost productivity and offer clear solutions, we identified a glaring gap in the market: there's no app that actively wastes your time in the most confusing way possible. Users are tragically underserved in their quest for digital pointlessness.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Aenigma is our answer. We've crafted an experience filled with shifting mazes, paradoxical sequences, and buttons that defy user input. It’s a sanctuary for those who want to question their sanity, one unsolvable puzzle at a time.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- Languages used : Dart
+- Frameworks used : Flutter
+- Libraries used :
+    * awesome_dialog: For creating stylish and unhelpful pop-up messages.
+    * flutter_fireworks: To celebrate the user's confusion with pretty explosions.
+    * crossword: For the unsolvable crossword puzzle.
+- Tools used
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Not applicable for this software project.
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+```
+# Clone the repository
+git clone https://github.com/Ajallen14/Aenigma.git
+
+# Navigate to the project directory
+cd aenigma
+
+# Get the dependencies
+flutter pub get
+```
 
 # Run
-[commands]
+```
+# Run the app on a connected device or emulator
+flutter run
+```
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+### The main screen, where interactive buttons float chaotically, inviting the user into the madness.
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+### The "Illogical Path" game, where the maze and controls shift randomly, ensuring no escape.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+### The "Unstable Tower" game, a physics-based stacking game designed to collapse under the weight of its own chaos.
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
@@ -81,16 +90,16 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/file/d/1fSVyify-r0imjyxqXT57gf5AeAxlz5Ul/view?usp=sharing
+
+This video demonstrates a user attempting to solve a puzzle, only to be met with shifting rules, confusing dialogs, and ultimately, a beautiful display of celebratory fireworks for their failure.
 
 # Additional Demos
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Arjun Shiju: Created Home_screen, Physics_widget, Login and Riddle files.
+- Allen Jude: Did rest of the code and managed the state of confusion
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
