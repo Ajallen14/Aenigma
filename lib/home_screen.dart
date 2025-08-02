@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter_fireworks/fireworks_controller.dart';
+import 'package:flutter_fireworks/fireworks_display.dart';
+import 'package:useless/button/chaos_cube/unstable_tower.dart';
+import 'package:useless/button/crossword/crossword_screen.dart';
+import 'package:useless/button/eternal_enigma/shifting_pattern.dart';
+import 'package:useless/button/logical_labyrinth/paradoxical_sequence.dart';
+import 'package:useless/button/mind_maze/llogical_path_game.dart';
 import 'package:useless/widgets/physics_widget.dart';
 
 class PuzzleHomePage extends StatefulWidget {
@@ -335,4 +342,8 @@ class _PuzzleHomePageState extends State<PuzzleHomePage> {
       ),
     );
   }
+}
+
+class RiddleRealmScreen {
+  const RiddleRealmScreen();
 }
