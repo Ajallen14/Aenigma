@@ -1,7 +1,6 @@
 import 'package:crossword/crossword.dart';
 import 'package:flutter/material.dart';
 
-/// A screen dedicated to displaying a more challenging crossword puzzle.
 class CrosswordScreen extends StatefulWidget {
   const CrosswordScreen({Key? key}) : super(key: key);
 
@@ -10,7 +9,6 @@ class CrosswordScreen extends StatefulWidget {
 }
 
 class _CrosswordScreenState extends State<CrosswordScreen> {
-  // A smaller, but still difficult, 12x12 crossword grid.
   final List<List<String>> letters = const [
     ['C', 'O', 'N', 'U', 'N', 'D', 'R', 'U', 'M', 'A', 'B', 'C'],
     ['X', 'L', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
@@ -26,7 +24,6 @@ class _CrosswordScreenState extends State<CrosswordScreen> {
     ['H', 'S', 'I', 'R', 'E', 'B', 'B', 'I', 'G', 'X', 'Y', 'Z'],
   ];
 
-  // The list of difficult words to find.
   final List<String> hints = const [
     "PARADOX",
     "ENIGMA",
