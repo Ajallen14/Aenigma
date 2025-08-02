@@ -60,10 +60,15 @@ For Software:
 
 # Screenshots (Add at least 3)
 ### The main screen, where interactive buttons float chaotically, inviting the user into the madness.
+<img width="390" height="851" alt="Screenshot from 2025-08-02 22-07-28" src="https://github.com/user-attachments/assets/579bd763-f642-4f03-b922-5b305a437068" />
+
 
 ### The "Illogical Path" game, where the maze and controls shift randomly, ensuring no escape.
+<img width="390" height="851" alt="Screenshot from 2025-08-02 22-27-13" src="https://github.com/user-attachments/assets/3034ea85-33f1-48ab-8263-bc8ab6960289" />
 
-### The "Unstable Tower" game, a physics-based stacking game designed to collapse under the weight of its own chaos.
+
+### The "Shifting Pattern" game, where players must match a target that constantly changes, making success a fleeting illusion.
+<img width="390" height="851" alt="Screenshot from 2025-08-02 22-21-13" src="https://github.com/user-attachments/assets/49440df2-411b-4bf0-a891-fbd08e43502a" />
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
