@@ -144,7 +144,7 @@ class _SplashScreenState extends State<SplashScreen>
                       ScaleTransition(
                         scale: _titleScaleAnimation,
                         child: Text(
-                          'Enigma',
+                          'Aenigma',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 50,
@@ -170,7 +170,7 @@ class _SplashScreenState extends State<SplashScreen>
                         child: Text(
                           'Are you ready to start your misery?',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white,
                             fontSize: 18,
                             fontStyle: FontStyle.italic,
                             fontFamily: 'Inter',
