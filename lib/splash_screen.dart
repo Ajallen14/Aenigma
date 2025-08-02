@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:useless/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -144,10 +144,10 @@ class _SplashScreenState extends State<SplashScreen>
                       ScaleTransition(
                         scale: _titleScaleAnimation,
                         child: Text(
-                          'The Unsolvable Puzzle',
+                          'Enigma',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 40,
+                            fontSize: 50,
                             fontWeight: FontWeight.w900,
                             fontFamily: 'Inter',
                             shadows: [
